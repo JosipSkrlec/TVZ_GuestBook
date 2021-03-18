@@ -6,10 +6,11 @@ using UnityEngine;
 public class StartingSceneController : MonoBehaviour
 {
     [SerializeField] private SQLManipulator _manipulator;
-    
+
     [SerializeField] private GameObject _notePrefab;
     [SerializeField] private Transform _notePrefabContainer;
 
+    [SerializeField] private float _spawnDelay = 0.1f;
 
     private List<Note> notesFromDatabase;
 
@@ -25,20 +26,26 @@ public class StartingSceneController : MonoBehaviour
 
         foreach (Note note in notesFromDatabase)
         {
-            Debug.Log(note.id);
-
-            GameObject noteGO = Instantiate(_notePrefab,_notePrefabContainer);
-
-            TMP_Text noteContentText = noteGO.transform.Find("NoteContentText").GetComponent<TMP_Text>();
-            noteContentText.text = note.Content;
-
-            TMP_Text noteUsernameText = noteGO.transform.Find("NoteUsernameText").GetComponent<TMP_Text>();
-            noteUsernameText.text = note.Username;
-
+            _spawnDelay += 0.1f;
+            StartCoroutine(SpawnDelay(_spawnDelay, note.Username, note.Content));
         }
 
 
     }
 
+    IEnumerator SpawnDelay(float seconds,string username, string content)
+    {
+        yield return new WaitForSeconds(seconds);
+
+        GameObject noteGO = Instantiate(_notePrefab, _notePrefabContainer);
+
+        NoteItem noteItem = noteGO.GetComponent<NoteItem>();
+
+        noteItem.SetupNote(username, content, true);
+
+    }
+
 
 }
+
+
