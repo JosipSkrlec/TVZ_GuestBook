@@ -558,7 +558,7 @@ MonoBehaviour:
   _notePrefab: {fileID: 849200807355414606, guid: 6776dad112d167b4ab9d9888091b9038,
     type: 3}
   _notePrefabContainer: {fileID: 2675904743111820201}
-  _spawnDelay: 0.1
+  _spawnDelay: 0.15
 --- !u!1 &447681773
 GameObject:
   m_ObjectHideFlags: 0

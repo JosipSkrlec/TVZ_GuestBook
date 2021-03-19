@@ -10,7 +10,7 @@ public class StartingSceneController : MonoBehaviour
     [SerializeField] private GameObject _notePrefab;
     [SerializeField] private Transform _notePrefabContainer;
 
-    [SerializeField] private float _spawnDelay = 0.1f;
+    [SerializeField] private float _spawnDelay = 0.15f;
 
     private List<Note> notesFromDatabase;
 
@@ -26,14 +26,14 @@ public class StartingSceneController : MonoBehaviour
 
         foreach (Note note in notesFromDatabase)
         {
-            _spawnDelay += 0.1f;
-            StartCoroutine(SpawnDelay(_spawnDelay, note.Username, note.Content));
+            StartCoroutine(SpawnDelay(_spawnDelay, note.Username, note.Content,note.PinID));
+            _spawnDelay += 0.15f;
         }
 
 
     }
 
-    IEnumerator SpawnDelay(float seconds,string username, string content)
+    IEnumerator SpawnDelay(float seconds,string username, string content, int pinIndicator)
     {
         yield return new WaitForSeconds(seconds);
 
@@ -41,7 +41,7 @@ public class StartingSceneController : MonoBehaviour
 
         NoteItem noteItem = noteGO.GetComponent<NoteItem>();
 
-        noteItem.SetupNote(username, content, true);
+        noteItem.SetupNote(username, content, pinIndicator, true);
 
     }
 

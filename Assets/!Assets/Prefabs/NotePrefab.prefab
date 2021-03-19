@@ -55,7 +55,7 @@ MonoBehaviour:
   _noteUsernameTitle: {fileID: 5925615277328648714}
   _noteContent: {fileID: 582280866568781394}
   _pinImage: {fileID: 3039078218795928832}
-  _randomRotation: {x: -5, y: 5}
+  _randomRotation: {x: -7.5, y: 7.5}
   Pins:
   - {fileID: 2800000, guid: 36864d77959dc264b8ec4b675a840250, type: 3}
   - {fileID: 2800000, guid: dfcbfde9e7cbc8243bda1051c3b66ef1, type: 3}

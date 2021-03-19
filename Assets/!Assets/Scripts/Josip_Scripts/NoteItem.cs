@@ -14,11 +14,14 @@ public class NoteItem : MonoBehaviour
     [SerializeField] private Texture2D[] Pins;
     private Sequence mySequence;
 
+    //this.gameObject.GetComponent<RectTransform>().DOShakeAnchorPos(0.15f, 5.0f, 2, 10.0f, false, false);
     private void Awake()
     {
          mySequence = DOTween.Sequence();
+        this.gameObject.GetComponent<RectTransform>().DOScale(1.4f,0.1f);
         mySequence.Append(_pinImage.transform.DOScale(1.7f, 0.15f));
-        mySequence.Append(_pinImage.transform.DOScale(1.0f, 0.15f)).SetDelay(0.15f);
+        this.gameObject.GetComponent<RectTransform>().DOScale(1.0f, 0.25f);
+        mySequence.Append(_pinImage.transform.DOScale(1.0f, 0.15f)).SetDelay(0.15f);       
         mySequence.Pause();
 
     }
@@ -29,7 +32,7 @@ public class NoteItem : MonoBehaviour
 
     }
 
-    public void SetupNote(string noteUsername, string noteContent, bool randomSpawn)
+    public void SetupNote(string noteUsername, string noteContent,int pinIndicator, bool randomSpawn)
     {
         _noteUsernameTitle.text = noteUsername;
         _noteContent.text = noteContent;
@@ -47,10 +50,16 @@ public class NoteItem : MonoBehaviour
             this.gameObject.transform.eulerAngles = new Vector3(0.0f,0.0f, randomNumber);
         }
 
-        int maxPinsTextures = Pins.Length;
-        int randomNumberForPin = Random.Range(0,maxPinsTextures);
+        if (pinIndicator < Pins.Length)
+        {
+            _pinImage.texture = Pins[pinIndicator];
+        }
+        else{
+            int maxPinsTextures = Pins.Length;
+            int randomNumberForPin = Random.Range(0,maxPinsTextures);
+            _pinImage.texture = Pins[randomNumberForPin];
+        }
 
-        _pinImage.texture = Pins[randomNumberForPin];
 
     }
 
