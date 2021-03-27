@@ -39,8 +39,8 @@ public class NoteItem : MonoBehaviour
 
         if (_randomRotation.x ==0 && _randomRotation.y ==0) {
 
-            _randomRotation.x = -5.0f;
-            _randomRotation.y = -5.0f;
+            _randomRotation.x = -1.5f;
+            _randomRotation.y = -1.5f;
         }
 
         if (randomSpawn)
