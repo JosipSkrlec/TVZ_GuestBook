@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -11,13 +12,24 @@ namespace Keyboard
         [SerializeField] private CanvasGroup _uppercaseLayer;
         [SerializeField] private CanvasGroup _numbersLayer;
         private CanvasGroup _currentLayer;
-        [SerializeField] private TMP_Text _inputTarget;
+        [SerializeField] private InputField _inputField;
 
         private void Start()
         {
             ShowCanvasGroup(_lowercaseLayer);
             HideCanvasGroup(_uppercaseLayer);
             HideCanvasGroup(_numbersLayer);
+            _inputField.Focus();
+        }
+
+        internal void SpecialKeyPress(KeyCode code)
+        {
+            _inputField.Execute(code);
+        }
+
+        public void KeyPress(string value)
+        {
+            _inputField.Append(value);
         }
 
         public void ShowLowercase()
