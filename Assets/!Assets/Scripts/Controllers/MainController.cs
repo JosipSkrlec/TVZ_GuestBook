@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class MainController : MonoBehaviour
 {
-    
+    public static MainController Instance;
+        
     [SerializeField] private float _spawnDelay;
     [SerializeField] private bool _showNotesAscending;
 
@@ -23,6 +24,16 @@ public class MainController : MonoBehaviour
 
     [SerializeField] private GameObject _OSK;
 
+    protected bool _isAuthorizedLikeAdmin = false;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
     private void Start()
     {
         Setup();
@@ -31,6 +42,7 @@ public class MainController : MonoBehaviour
     public void Setup()
     {
         notesFromDatabaseGO = new List<GameObject>();
+
         SetUpNotes();
     }
 
@@ -47,6 +59,7 @@ public class MainController : MonoBehaviour
             notesFromDatabase.Clear();
         }
 
+
         _SqlManipulator.SaveNotesToList();
         notesFromDatabase = _SqlManipulator.GetNotes();
 
@@ -55,7 +68,7 @@ public class MainController : MonoBehaviour
         {
             foreach (Note note in notesFromDatabase)
             {
-                StartCoroutine(SpawnDelay(_spawnDelay, note.Username, note.Content, note.PinID));
+                StartCoroutine(SpawnNoteWithDelay(_spawnDelay,note.id, note.Username, note.Content, note.PinID));
                 _spawnDelay += 0.15f;
             }
         }
@@ -66,20 +79,25 @@ public class MainController : MonoBehaviour
             for (int x = notesFromDatabase.Count - 1; x != -1; x--)
             {
                 note = notesFromDatabase[x];
-                StartCoroutine(SpawnDelay(_spawnDelay, note.Username, note.Content, note.PinID));
+                StartCoroutine(SpawnNoteWithDelay(_spawnDelay,note.id, note.Username, note.Content, note.PinID));
                 _spawnDelay += 0.15f;
             }
         }
     }
-    IEnumerator SpawnDelay(float seconds,string username, string content, int pinIndicator)
+    IEnumerator SpawnNoteWithDelay(float seconds,int ID, string username, string content, int pinIndicator)
     {
         yield return new WaitForSeconds(seconds);
 
         GameObject noteGO = Instantiate(_notePrefab, _notePrefabContainer);
 
+        if (_isAuthorizedLikeAdmin)
+        {
+            noteGO.transform.GetChild(noteGO.transform.childCount - 1).gameObject.SetActive(true);
+        }
+
         NoteItem noteItem = noteGO.GetComponent<NoteItem>();
 
-        noteItem.SetupNote(username, content, pinIndicator, true);
+        noteItem.SetupNote(ID,username, content, pinIndicator, true);
 
         notesFromDatabaseGO.Add(noteGO);
 
@@ -87,12 +105,18 @@ public class MainController : MonoBehaviour
     public void ShowNewNoteCanvas()
     {
         _OSK.GetComponent<OSK_NewNodeController>().Setup();
-        _addNewNoteCanvas.DOFade(1.0f,1.5f).OnComplete(() => {
-            _addNewNoteCanvas.interactable = true;
-            _addNewNoteCanvas.blocksRaycasts = true;
-        });
+
+        _addNewNoteCanvas.DOFade(1.0f, 1.0f);
+        _addNewNoteCanvas.interactable = true;
+        _addNewNoteCanvas.blocksRaycasts = true;
 
     }
+
+    public void SetAdminAuthorization(bool AuthorizationFlag)
+    {
+        _isAuthorizedLikeAdmin = AuthorizationFlag;
+    }
+
 }
 
 

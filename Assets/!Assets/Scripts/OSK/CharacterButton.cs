@@ -10,6 +10,7 @@ namespace Keyboard
     public class CharacterButton : MonoBehaviour, IPointerUpHandler
     {
         [SerializeField] private OSK_NewNodeController _osk;
+        [SerializeField] private OSK_AdminCanvas _osk1;
         private string _character = "";
 
         private void Awake()
@@ -19,7 +20,8 @@ namespace Keyboard
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            _osk.KeyPress(_character);
+            _osk?.KeyPress(_character);
+            _osk1?.KeyPress(_character);
         }
     }
 }

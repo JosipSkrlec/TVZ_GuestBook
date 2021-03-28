@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace Keyboard
@@ -34,7 +31,6 @@ namespace Keyboard
         {
             Setup();
         }
-
         public void Setup()
         {
             ShowCanvasGroup(_lowercaseLayer);

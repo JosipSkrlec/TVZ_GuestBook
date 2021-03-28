@@ -1,0 +1,9 @@
+-kada se utipka zadnji red special keya u new note.. javi gresku!!!!
+
+
+
+// SQL commands QUERY
+DELETE FROM Notes;
+TRUNCATE TABLE Notes;
+DROP TABLE Notes;
+UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Notes';

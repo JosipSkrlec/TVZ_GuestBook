@@ -11,10 +11,10 @@ public class ActivateAdmin : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
     [SerializeField] private float _timeToDisplayAdminPanel = 3.0f;
     [SerializeField] private CanvasGroup _adminPanel;
 
+    [SerializeField] private GameObject _OSKAdmin;
 
     private bool isRacePressed = false;
     private float countingTime = 0.0f;
-
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -38,9 +38,9 @@ public class ActivateAdmin : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
             if (countingTime >= _timeToDisplayAdminPanel)
             {
                 countingTime = 0.0f;
-                Debug.Log("Show admin panel!");
-                _adminPanel.DOFade(1.0f,2.0f);
+                _adminPanel.DOFade(1.0f,1.0f);
                 _adminPanel.blocksRaycasts = true;
+                _adminPanel.interactable = true;
             }
 
             _countdownText.text = countingTime.ToString();

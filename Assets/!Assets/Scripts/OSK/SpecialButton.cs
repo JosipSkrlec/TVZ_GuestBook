@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Keyboard
@@ -15,10 +13,15 @@ namespace Keyboard
     public class SpecialButton : MonoBehaviour, IPointerUpHandler
     {
         [SerializeField] private OSK_NewNodeController _osk;
+        [SerializeField] private OSK_AdminCanvas _osk1;
+
         [SerializeField] private KeyCode _code;
+
         public void OnPointerUp(PointerEventData eventData)
         {
-            _osk.SpecialKeyPress(_code);
+            _osk1?.SpecialKeyPress((UnityEngine.KeyCode)_code);
+            _osk?.SpecialKeyPress(_code);
+
         }
     }
 }
