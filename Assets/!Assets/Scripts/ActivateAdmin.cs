@@ -37,6 +37,7 @@ public class ActivateAdmin : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
 
             if (countingTime >= _timeToDisplayAdminPanel)
             {
+                countingTime = 0.0f;
                 Debug.Log("Show admin panel!");
                 _adminPanel.DOFade(1.0f,2.0f);
                 _adminPanel.blocksRaycasts = true;

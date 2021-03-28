@@ -9,7 +9,7 @@ namespace Keyboard
 
     public class CharacterButton : MonoBehaviour, IPointerUpHandler
     {
-        [SerializeField] private HR_OSK_Controller _osk;
+        [SerializeField] private OSK_NewNodeController _osk;
         private string _character = "";
 
         private void Awake()

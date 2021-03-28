@@ -14,7 +14,7 @@ namespace Keyboard
 
     public class SpecialButton : MonoBehaviour, IPointerUpHandler
     {
-        [SerializeField] private HR_OSK_Controller _osk;
+        [SerializeField] private OSK_NewNodeController _osk;
         [SerializeField] private KeyCode _code;
         public void OnPointerUp(PointerEventData eventData)
         {
