@@ -6,14 +6,18 @@ using UnityEngine;
 
 public class MainController : MonoBehaviour
 {
+    
+    [SerializeField] private float _spawnDelay;
+    [SerializeField] private bool _showNotesAscending;
+
     [SerializeField] private SQLManipulator _SqlManipulator;
 
     [SerializeField] private GameObject _notePrefab;
     [SerializeField] private Transform _notePrefabContainer;
 
-    [SerializeField] private float _spawnDelay = 0.15f;
 
     private List<Note> notesFromDatabase;
+    private List<GameObject> notesFromDatabaseGO;
 
     [SerializeField] private CanvasGroup _addNewNoteCanvas;
 
@@ -26,17 +30,45 @@ public class MainController : MonoBehaviour
 
     public void Setup()
     {
+        notesFromDatabaseGO = new List<GameObject>();
         SetUpNotes();
     }
 
     public void SetUpNotes()
     {
+        _spawnDelay = 0.15f;
+
+        if (notesFromDatabase != null)
+        {
+            foreach (Transform go in _notePrefabContainer)
+            {
+                Destroy(go.gameObject);
+            }
+            notesFromDatabase.Clear();
+        }
+
+        _SqlManipulator.SaveNotesToList();
         notesFromDatabase = _SqlManipulator.GetNotes();
 
-        foreach (Note note in notesFromDatabase)
+        // show notes in Ascending mode A-Z
+        if (_showNotesAscending)
         {
-            StartCoroutine(SpawnDelay(_spawnDelay, note.Username, note.Content,note.PinID));
-            _spawnDelay += 0.15f;
+            foreach (Note note in notesFromDatabase)
+            {
+                StartCoroutine(SpawnDelay(_spawnDelay, note.Username, note.Content, note.PinID));
+                _spawnDelay += 0.15f;
+            }
+        }
+        // show Notes in Descending mode Ž-A
+        else
+        {
+            Note note;
+            for (int x = notesFromDatabase.Count - 1; x != -1; x--)
+            {
+                note = notesFromDatabase[x];
+                StartCoroutine(SpawnDelay(_spawnDelay, note.Username, note.Content, note.PinID));
+                _spawnDelay += 0.15f;
+            }
         }
     }
     IEnumerator SpawnDelay(float seconds,string username, string content, int pinIndicator)
@@ -48,6 +80,8 @@ public class MainController : MonoBehaviour
         NoteItem noteItem = noteGO.GetComponent<NoteItem>();
 
         noteItem.SetupNote(username, content, pinIndicator, true);
+
+        notesFromDatabaseGO.Add(noteGO);
 
     }
     public void ShowNewNoteCanvas()

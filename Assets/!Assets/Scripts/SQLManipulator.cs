@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class SQLManipulator : MonoBehaviour
 {
+    public static SQLManipulator Instance;
+
     private string conn;
     private string sqlQuery;
 
@@ -16,6 +18,12 @@ public class SQLManipulator : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+
+
         ListOfNotes = new List<Note>();
 
         // put do baze podataka
@@ -32,9 +40,6 @@ public class SQLManipulator : MonoBehaviour
         //InsertNote("Marija", "9-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", 2, 1);
         //InsertNote("Sonja", "10-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", 1, 2);
         //InsertNote("Davorka", "11-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", 3, 3);
-
-        SaveNotesToList();
-
     }
 
 

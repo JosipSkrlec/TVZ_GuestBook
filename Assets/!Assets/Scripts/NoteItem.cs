@@ -30,6 +30,7 @@ public class NoteItem : MonoBehaviour
     {
         mySequence.Play();
 
+
     }
 
     public void SetupNote(string noteUsername, string noteContent,int pinIndicator, bool randomSpawn)

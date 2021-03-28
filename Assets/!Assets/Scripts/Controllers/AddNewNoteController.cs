@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class AddNewNoteController : MonoBehaviour
 {
@@ -10,11 +9,23 @@ public class AddNewNoteController : MonoBehaviour
     [SerializeField] private TMP_InputField _usernameInputText;
     [SerializeField] private TMP_InputField _contentInputText;
 
+    [SerializeField] private MainController _mainController;
+
+    private int _selectedPinID;
+    public int SelectedPinID { get => _selectedPinID; set => _selectedPinID = value; }
+
     private string _noteUsername;
     private string _noteContent;
 
     private int _pinId;
     private int _fontId;
+
+    private void Awake()
+    {
+        _pinId = 1;
+        _fontId = 1;
+    }
+
 
     public void CloseAddNewNodeCanvas()
     {
@@ -33,10 +44,18 @@ public class AddNewNoteController : MonoBehaviour
         }
         else
         {
+            Debug.Log("Adding new note to DB");
             _noteUsername = _usernameInputText.text;
             _noteContent = _contentInputText.text;
 
+            _addNewNoteCG.DOFade(0.0f,1.5f).OnComplete(()=> {
+                _addNewNoteCG.blocksRaycasts = false;
+                _addNewNoteCG.interactable = true;
+            });
 
+            SQLManipulator.Instance.InsertNote(_noteUsername,_noteContent, _pinId, 1);
+
+            _mainController.SetUpNotes();
         }
     }
 
@@ -47,15 +66,15 @@ public class AddNewNoteController : MonoBehaviour
 
         if (string.IsNullOrEmpty(username))
         {
-            return false;
+            return true;
         }
         else if (string.IsNullOrEmpty(content))
         {
-            return false;
+            return true;
         }
         else
         {
-            return true;
+            return false;
         }
 
     }
