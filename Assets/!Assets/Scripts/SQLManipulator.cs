@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Data;
-using Mono.Data.Sqlite;
 using System.Collections.Generic;
+using Mono.Data.Sqlite;
 
 public class SQLManipulator : MonoBehaviour
 {
@@ -54,6 +54,7 @@ public class SQLManipulator : MonoBehaviour
             dbconn.Close();
 
         }
+
     }
     public void DeleteNote(int id)
     {
