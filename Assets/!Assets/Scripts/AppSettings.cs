@@ -7,7 +7,13 @@ public class AppSettings : MonoBehaviour
 {
     private void Awake()
     {
-        Screen.SetResolution(1080, 1920, true, 60);
+
+        //Set screen size for Standalone
+//#if UNITY_STANDALONE
+//        Screen.SetResolution(1080, 1920, true);
+//        Screen.fullScreen = true;
+//#endif
+
 
     }
 
