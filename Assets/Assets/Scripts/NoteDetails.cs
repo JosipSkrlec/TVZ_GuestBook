@@ -33,6 +33,7 @@ public class NoteDetails : MonoBehaviour
         MonoBehaviour[] comps = go.GetComponents<MonoBehaviour>();
         foreach (MonoBehaviour c in comps)
         {
+
             c.enabled = false;
         }
 

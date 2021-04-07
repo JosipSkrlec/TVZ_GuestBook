@@ -302,7 +302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 8.465942, y: -1750}
+  m_AnchoredPosition: {x: 0, y: -1750}
   m_SizeDelta: {x: 1102.9319, y: 1224.8032}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &42981941
@@ -782,7 +782,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114224398}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16b10ebbd1082ea42835f83dda03f8b3, type: 3}
   m_Name: 
@@ -2755,11 +2755,11 @@ RectTransform:
   m_Father: {fileID: 407995281}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1080, y: 1920}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1036876213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2884,7 +2884,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1072243982}
-  - component: {fileID: 1072243981}
   m_Layer: 0
   m_Name: INIT
   m_TagString: Untagged
@@ -2892,18 +2891,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1072243981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072243980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6d131676a82459418f0f3210f807175, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1072243982
 Transform:
   m_ObjectHideFlags: 0
@@ -4499,7 +4486,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
