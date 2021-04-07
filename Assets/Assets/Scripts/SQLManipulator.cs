@@ -26,7 +26,11 @@ public class SQLManipulator : MonoBehaviour
         ListOfNotes = new List<Note>();
 
         // put do baze podataka
+<<<<<<< HEAD:Assets/Assets/Scripts/SQLManipulator.cs
         conn = "URI=file:" + Application.dataPath + "/StreamingAssets/Users.s3db";
+=======
+        conn = "URI=file:" + Application.dataPath + "/Plugins/Users.s3db";
+>>>>>>> 273b009a721912bbd9dd69b50fee0ce14625162f:Assets/!Assets/Scripts/SQLManipulator.cs
 
         // tests
         //InsertNote("Ivan", "3-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", 2, 3);
