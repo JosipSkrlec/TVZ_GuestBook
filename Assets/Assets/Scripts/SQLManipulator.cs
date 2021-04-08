@@ -40,7 +40,6 @@ public class SQLManipulator : MonoBehaviour
         //InsertNote("Davorka", "11-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", 3, 3);
     }
 
-
     public void InsertNote(string username, string content, int pinID, int fontID)
     {
         using (dbconn = new SqliteConnection(conn))
@@ -51,9 +50,7 @@ public class SQLManipulator : MonoBehaviour
             dbcmd.CommandText = sqlQuery;
             dbcmd.ExecuteScalar();
             dbconn.Close();
-
         }
-
     }
     public void DeleteNote(int id)
     {
@@ -67,7 +64,6 @@ public class SQLManipulator : MonoBehaviour
             dbconn.Close();
         }
     }
-
     public void SaveNotesToList()
     {
         using (dbconn = new SqliteConnection(conn))
@@ -91,37 +87,30 @@ public class SQLManipulator : MonoBehaviour
                 //string.Format("insert into Notes (Username, Content, PinID, FontID) values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", username, content, pinID, fontID);                
                 //Debug.Log("value= " + id + "  username =" + username + "  content =" + content + "   pinID =" + pinID + "   fontID =" + fontID);
             }
-
             reader.Close();
             reader = null;
             dbcmd.Dispose();
             dbcmd = null;
             dbconn.Close();
             dbconn = null;
-
         }
     }
-
     // HELPERS
     public List<Note> GetNotes()
     {
         return ListOfNotes;
     }
-    
+    private void Updatevalue(string name, string email, string address, int id)
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
 
-
-
-    //private void Updatevalue(string name, string email, string address, int id)
-    //{
-    //    using (dbconn = new SqliteConnection(conn))
-    //    {
-
-    //        dbconn.Open(); //Open connection to the database.
-    //        dbcmd = dbconn.CreateCommand();
-    //        sqlQuery = string.Format("UPDATE Usersinfo set Name=\"{0}\", Email=\"{1}\", Address=\"{2}\" WHERE ID=\"{3}\" ", name, email, address, id);// table name
-    //        dbcmd.CommandText = sqlQuery;
-    //        dbcmd.ExecuteScalar();
-    //        dbconn.Close();
-    //    }
-    //}
+            dbconn.Open(); //Open connection to the database.
+            dbcmd = dbconn.CreateCommand();
+            sqlQuery = string.Format("UPDATE Usersinfo set Name=\"{0}\", Email=\"{1}\", Address=\"{2}\" WHERE ID=\"{3}\" ", name, email, address, id);// table name
+            dbcmd.CommandText = sqlQuery;
+            dbcmd.ExecuteScalar();
+            dbconn.Close();
+        }
+    }
 }

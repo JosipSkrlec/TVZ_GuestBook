@@ -23,17 +23,22 @@ public class NoteDetails : MonoBehaviour
             Destroy((GameObject)_nodeDetailParent.transform.GetChild(0).gameObject);
         }
 
-        _nodeDetailParentCG.DOFade(1.0f,1.0f);
+        _nodeDetailParentCG.DOFade(1.0f, 1.0f);
         _nodeDetailParentCG.blocksRaycasts = true;
         _nodeDetailParentCG.interactable = true;
 
-        GameObject go= Instantiate(this.gameObject, _nodeDetailParent.transform,true);
+
+        //GameObject go= Instantiate(this.gameObject, _nodeDetailParent.transform,true);
+
+        //GameObject go = Instantiate(this.gameObject, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, _nodeDetailParent.transform);
+        GameObject go = GameObject.Instantiate(this.gameObject, _nodeDetailParentCG.transform,false);
+        //go.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+        //go.transform.position = _nodeDetailParentCG.transform.parent.position;
 
         // disable all components inside of game object
         MonoBehaviour[] comps = go.GetComponents<MonoBehaviour>();
         foreach (MonoBehaviour c in comps)
         {
-
             c.enabled = false;
         }
 
@@ -42,7 +47,7 @@ public class NoteDetails : MonoBehaviour
         textGOParent.GetChild(1).GetComponent<TMP_Text>().fontSize = 10;
 
         RectTransform rt = go.GetComponent<RectTransform>();
-        rt.DOAnchorPos(new Vector2(540.0f,1400.0f),1.5f);
+        rt.DOAnchorPos(new Vector2(530.0f,-300.0f),1.5f);
         rt.DOScale(new Vector3(3.0f, 3.0f, 1.0f), 1.5f);
     }
 

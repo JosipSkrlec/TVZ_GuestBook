@@ -9,8 +9,6 @@ public class ActivateAdmin : MonoBehaviour, IPointerDownHandler,IPointerUpHandle
     [SerializeField] private float _timeToDisplayAdminPanel = 3.0f;
     [SerializeField] private CanvasGroup _adminPanel;
 
-    [SerializeField] private GameObject _OSKAdmin;
-
     private bool isRacePressed = false;
     private float countingTime = 0.0f;
 
