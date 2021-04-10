@@ -1,0 +1,11 @@
+sqllite3.dll
+https://www.2-spyware.com/file-sqlite3-dll.html
+
+System.data
+https://system.data.sqlite.org/index.html/doc/trunk/www/index.wiki
+
+.def files what is this?
+https://file.org/extension/def
+
+mono.data.sqlite
+https://csharp.hotexamples.com/examples/Mono.Data.Sqlite/SqliteConnection/-/php-sqliteconnection-class-examples.html
