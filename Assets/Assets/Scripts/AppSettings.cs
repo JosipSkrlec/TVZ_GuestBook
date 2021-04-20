@@ -7,7 +7,7 @@ public class AppSettings : MonoBehaviour
 {
     private void Awake()
     {
-        Screen.SetResolution(1080, 1920, true, 60);
-        //Screen.fullScreen = false;
+        //Screen.SetResolution(1080, 1920, true, 60);
+        Screen.fullScreen = false;
     }
 }
