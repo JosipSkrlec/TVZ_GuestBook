@@ -1,0 +1,15 @@
+@startuml
+class SQLManipulator {
+    + InsertNote(username:string, content:string, pinID:int, fontID:int) : void
+    + DeleteNote(id:int) : void
+    + SaveNotesToList() : void
+    + GetNotes() : List<Note>
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- SQLManipulator
+SQLManipulator --> "Instance" SQLManipulator
+SQLManipulator --> "dbconn" IDbConnection
+SQLManipulator --> "dbcmd" IDbCommand
+SQLManipulator --> "ListOfNotes<Note>" "List`1"
+@enduml

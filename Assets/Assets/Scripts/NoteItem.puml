@@ -1,0 +1,7 @@
+@startuml
+class NoteItem {
+    + SetupNote(noteID:int, noteUsername:string, noteContent:string, pinIndicator:int, randomSpawn:bool) : void
+    + DeleteNoteOnAdminClick() : void
+}
+MonoBehaviour <|-- NoteItem
+@enduml

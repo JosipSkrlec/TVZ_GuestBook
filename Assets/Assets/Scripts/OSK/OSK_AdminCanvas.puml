@@ -1,0 +1,13 @@
+@startuml
+class OSK_AdminCanvas {
+    + Setup() : void
+    <<internal>> SpecialKeyPress(code:KeyCode) : void
+    + KeyPress(value:string) : void
+    + TextInputChanged() : void
+    + CloseAdmin() : void
+    + ShowLowercase() : void
+    + ShowUppercase() : void
+    + ShowNumbers() : void
+}
+MonoBehaviour <|-- OSK_AdminCanvas
+@enduml

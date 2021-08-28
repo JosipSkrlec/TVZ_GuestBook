@@ -1,0 +1,10 @@
+@startuml
+class Note {
+    + Note(id:int, username:string, content:string, pinID:int, fontID:int)
+    + id : int <<get>> <<set>>
+    + Username : string <<get>> <<set>>
+    + Content : string <<get>> <<set>>
+    + PinID : int <<get>> <<set>>
+    + FontID : int <<get>> <<set>>
+}
+@enduml

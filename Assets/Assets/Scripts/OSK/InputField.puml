@@ -1,0 +1,9 @@
+@startuml
+class InputField {
+    + Focus() : void
+    + UnFocus() : void
+    + Append(value:string) : void
+    <<internal>> Execute(code:KeyCode) : void
+}
+MonoBehaviour <|-- InputField
+@enduml

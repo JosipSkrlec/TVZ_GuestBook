@@ -1,0 +1,15 @@
+@startuml
+class KeyboardScript {
+    + alphabetFunction(alphabet:string) : void
+    + BackSpace() : void
+    + CloseAllLayouts() : void
+    + ShowLayout(SetLayout:GameObject) : void
+}
+MonoBehaviour <|-- KeyboardScript
+KeyboardScript --> "TextField" InputField
+KeyboardScript --> "RusLayoutSml" GameObject
+KeyboardScript --> "RusLayoutBig" GameObject
+KeyboardScript --> "EngLayoutSml" GameObject
+KeyboardScript --> "EngLayoutBig" GameObject
+KeyboardScript --> "SymbLayout" GameObject
+@enduml

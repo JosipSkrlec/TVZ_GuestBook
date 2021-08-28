@@ -1,0 +1,7 @@
+@startuml
+class ChangePin {
+    _pinID : int
+    + ChangePinOnClick() : void
+}
+MonoBehaviour <|-- ChangePin
+@enduml

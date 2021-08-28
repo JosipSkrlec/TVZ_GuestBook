@@ -1,0 +1,10 @@
+@startuml
+class ActivateAdmin {
+    + OnPointerDown(eventData:PointerEventData) : void
+    + OnPointerUp(eventData:PointerEventData) : void
+    Update() : void
+}
+MonoBehaviour <|-- ActivateAdmin
+IPointerDownHandler <|-- ActivateAdmin
+IPointerUpHandler <|-- ActivateAdmin
+@enduml

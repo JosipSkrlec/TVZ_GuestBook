@@ -1,0 +1,12 @@
+@startuml
+enum KeyCode {
+    Delete,
+    Space,
+    Enter,
+}
+class SpecialButton {
+    + OnPointerUp(eventData:PointerEventData) : void
+}
+MonoBehaviour <|-- SpecialButton
+IPointerUpHandler <|-- SpecialButton
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class MainController {
+    + Setup() : void
+    + SetUpNotes() : void
+    SpawnNoteWithDelay(seconds:float, ID:int, username:string, content:string, pinIndicator:int) : IEnumerator
+    + ShowNewNoteCanvas() : void
+    + SetAdminAuthorization(AuthorizationFlag:bool) : void
+}
+MonoBehaviour <|-- MainController
+MainController --> "Instance" MainController
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+class OSK_NewNodeController {
+    + Setup() : void
+    <<internal>> SpecialKeyPress(code:KeyCode) : void
+    + KeyPress(value:string) : void
+    + SetInputFieldToSelected(_inputField:TMP_InputField) : void
+    + ShowLowercase() : void
+    + ShowUppercase() : void
+    + ShowNumbers() : void
+}
+MonoBehaviour <|-- OSK_NewNodeController
+@enduml

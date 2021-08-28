@@ -1,0 +1,8 @@
+@startuml
+class AddNewNoteController {
+    + SelectedPinID : int <<get>> <<set>>
+    + CloseAddNewNodeCanvas() : void
+    + AddNewNodeToDb() : void
+}
+MonoBehaviour <|-- AddNewNoteController
+@enduml

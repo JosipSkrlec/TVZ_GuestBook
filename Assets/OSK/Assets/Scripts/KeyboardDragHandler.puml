@@ -1,0 +1,7 @@
+@startuml
+class KeyboardDragHandler {
+    + OnDrag(eventData:PointerEventData) : void
+}
+MonoBehaviour <|-- KeyboardDragHandler
+IDragHandler <|-- KeyboardDragHandler
+@enduml

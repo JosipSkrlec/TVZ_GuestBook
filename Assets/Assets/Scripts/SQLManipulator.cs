@@ -22,7 +22,6 @@ public class SQLManipulator : MonoBehaviour
             Instance = this;
         }
 
-
         ListOfNotes = new List<Note>();
 
         conn = "URI=file:" + Application.dataPath + "/StreamingAssets/Users.s3db";

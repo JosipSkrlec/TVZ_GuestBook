@@ -1,0 +1,7 @@
+@startuml
+class CharacterButton {
+    + OnPointerUp(eventData:PointerEventData) : void
+}
+MonoBehaviour <|-- CharacterButton
+IPointerUpHandler <|-- CharacterButton
+@enduml

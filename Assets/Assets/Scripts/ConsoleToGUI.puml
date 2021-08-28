@@ -1,0 +1,14 @@
+@startuml
+class ConsoleToGUI {
+    myLog : string = "*begin log"
+    filename : string = ""
+    doShow : bool = true
+    kChars : int = 700
+    OnEnable() : void
+    OnDisable() : void
+    Update() : void
+    + Log(logString:string, stackTrace:string, type:LogType) : void
+    OnGUI() : void
+}
+MonoBehaviour <|-- ConsoleToGUI
+@enduml
